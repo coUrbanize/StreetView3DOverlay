@@ -1,25 +1,3 @@
-/**
-    streetviewoverlay.js - 3D Data on Google Street View Visualization
-    Copyright (C) 2013 Rubén Béjar {http://www.rubenbejar.com/}
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy of
-    this software and associated documentation files (the "Software"), to deal in
-    the Software without restriction, including without limitation the rights to
-    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-    the Software, and to permit persons to whom the Software is furnished to do so,
-    subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 function StreetViewOverlay() {
     var SVO = {};    
     
@@ -68,10 +46,10 @@ function StreetViewOverlay() {
     SVO.$container = null;
     SVO.container = null;    
             
-    SVO.dragView = {draggingView: false, mouseDownX: 0, mouseDownY: 0};
+    // SVO.dragView = {draggingView: false, mouseDownX: 0, mouseDownY: 0};
             
-    SVO.$streetViewPano = null;
-    SVO.streetViewPano = null;            
+    // SVO.$streetViewPano = null;
+    // SVO.streetViewPano = null;            
   
     SVO.currentStreetViewZoom = 1;           
                     
@@ -107,7 +85,7 @@ function StreetViewOverlay() {
             
             SVO.$streetViewPano = $('#'+SVO.STREETVIEW_DIV_ID);
             SVO.streetViewPano = new google.maps.StreetViewPanorama($('#'+SVO.STREETVIEW_DIV_ID).get(0),
-                             {disableDefaultUI: true, scrollwheel: false, clickToGo: false});
+                             {disableDefaultUI: false, scrollwheel: true, clickToGo: true});
             
             // In order to show and make responsive the links that Google adds to every
             // Street View panorama (link to Google maps, terms of use etc.) I have
@@ -141,7 +119,7 @@ function StreetViewOverlay() {
         SVO.currentPanorama = {};
         SVO.currentPanorama.position = new THREE.Vector3(panoPos.x, panoPos.y, panoPos.z); 
         SVO.currentPanorama.position.y += SVO.PANO_HEIGHT;
-        SVO.currentPanorama.heading = 0;           
+        SVO.currentPanorama.heading = 120;           
         SVO.currentPanorama.pitch = 0;         
                 
         if (SVO.showing.streetView) {
@@ -261,8 +239,8 @@ function StreetViewOverlay() {
         };  
         
         function onMouseDown(event) {
-            event.preventDefault();           
-            event.stopPropagation();
+            // event.preventDefault();           
+            // event.stopPropagation();
                 
             SVO.dragView.draggingView = true;
 
@@ -271,14 +249,14 @@ function StreetViewOverlay() {
         };
         
         function onMouseUp(event) {
-            event.preventDefault();           
-            event.stopPropagation();
+            // event.preventDefault();           
+            // event.stopPropagation();
             SVO.dragView.draggingView = false;
         };
         
         function onMouseMove(event) {
-            event.preventDefault();           
-            event.stopPropagation();
+            // event.preventDefault();           
+            // event.stopPropagation();
             
             var horizontalMovement, verticalMovement;     
             
@@ -332,10 +310,10 @@ function StreetViewOverlay() {
             }
         };
       
-        SVO.$container.mousewheel(onMouseWheel);
-        SVO.$container.mousedown(onMouseDown);
-        SVO.$container.mouseup(onMouseUp);
-        SVO.$container.mousemove(onMouseMove);
+        // SVO.$container.mousewheel(onMouseWheel);
+        // SVO.$container.mousedown(onMouseDown);
+        // SVO.$container.mouseup(onMouseUp);
+        // SVO.$container.mousemove(onMouseMove);
         $(window).resize(onWindowResize);
         $(document).on("keyup", onKeyUp);
         
