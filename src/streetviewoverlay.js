@@ -46,10 +46,10 @@ function StreetViewOverlay() {
     SVO.$container = null;
     SVO.container = null;    
             
-    // SVO.dragView = {draggingView: false, mouseDownX: 0, mouseDownY: 0};
+    SVO.dragView = {draggingView: false, mouseDownX: 0, mouseDownY: 0};
             
-    // SVO.$streetViewPano = null;
-    // SVO.streetViewPano = null;            
+    SVO.$streetViewPano = null;
+    SVO.streetViewPano = null;            
   
     SVO.currentStreetViewZoom = 1;           
                     
@@ -119,8 +119,8 @@ function StreetViewOverlay() {
         SVO.currentPanorama = {};
         SVO.currentPanorama.position = new THREE.Vector3(panoPos.x, panoPos.y, panoPos.z); 
         SVO.currentPanorama.position.y += SVO.PANO_HEIGHT;
-        SVO.currentPanorama.heading = 120;           
-        SVO.currentPanorama.pitch = 0;         
+        SVO.currentPanorama.heading =  293.08;           
+        SVO.currentPanorama.pitch = 4.58;         
                 
         if (SVO.showing.streetView) {
             SVO.cameraParams.focalLength = SVO.streetViewFocalLenght();
@@ -239,8 +239,8 @@ function StreetViewOverlay() {
         };  
         
         function onMouseDown(event) {
-            // event.preventDefault();           
-            // event.stopPropagation();
+            event.preventDefault();           
+            event.stopPropagation();
                 
             SVO.dragView.draggingView = true;
 
@@ -249,14 +249,14 @@ function StreetViewOverlay() {
         };
         
         function onMouseUp(event) {
-            // event.preventDefault();           
-            // event.stopPropagation();
+            event.preventDefault();           
+            event.stopPropagation();
             SVO.dragView.draggingView = false;
         };
         
         function onMouseMove(event) {
-            // event.preventDefault();           
-            // event.stopPropagation();
+            event.preventDefault();           
+            event.stopPropagation();
             
             var horizontalMovement, verticalMovement;     
             
@@ -310,10 +310,10 @@ function StreetViewOverlay() {
             }
         };
       
-        // SVO.$container.mousewheel(onMouseWheel);
-        // SVO.$container.mousedown(onMouseDown);
-        // SVO.$container.mouseup(onMouseUp);
-        // SVO.$container.mousemove(onMouseMove);
+        SVO.$container.mousewheel(onMouseWheel);
+        SVO.$container.mousedown(onMouseDown);
+        SVO.$container.mouseup(onMouseUp);
+        SVO.$container.mousemove(onMouseMove);
         $(window).resize(onWindowResize);
         $(document).on("keyup", onKeyUp);
         
