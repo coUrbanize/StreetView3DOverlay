@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Street View Overlay - EINA</title>
+		<title>block test</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -42,6 +42,7 @@
 		<script src="lib/three.min.js"></script>
 		<script src="lib/Detector.js"></script>
 		<script src="lib/ColladaLoader.js"></script>
+    <script src="lib/ObjectLoader.js"></script>
         <script src="src/streetviewoverlay.js"></script>
 
 		<script>
@@ -78,8 +79,8 @@
         
         // Origin is the position of our 3d object
         function latLon2ThreeMeters(lat, lon) {
-            var xy = hackMapProjection(lat, lon, objectPosition[0], objectPosition[1]);
-            return {'x': xy.x, 'y': 0, 'z': -xy.y};
+            var coordinates = hackMapProjection(lat, lon, objectPosition[0], objectPosition[1]);
+            return {'x': coordinates.x, 'y': 0, 'z': -coordinates.y};
         }
         
 		// var jsonLoader = new THREE.JSONLoader();
@@ -120,10 +121,20 @@
   //           streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, mesh, 42.363115, -71.087674);           
   //       }
 
+
+            // collada
             var loader = new THREE.ColladaLoader();
             loader.load('model3d/block.dae', loadWheel);
 
-            function loadWheel(result) {
+            // OBJ            
+            // var manager = new THREE.LoadingManager();
+            // manager.onProgress = function ( item, loaded, total ) {
+            //   console.log( item, loaded, total );
+            // };
+            // var loader = new THREE.ObjectLoader(manager);
+            // loader.load('model3d/block.obj', loadWheel);
+
+            function loadWheel(geometry, materials) {
                 // var mesh;
                 // mesh = new THREE.Mesh(geometry, 
                 //                           new THREE.MeshFaceMaterial(materials));
@@ -156,11 +167,11 @@
                 // result.scene.rotation.y = Math.PI/2;
                 // result.scene.rotation.x = Math.PI/2;
                 // result.scene.rotation.z = Math.PI/2;
-                // result.scene.rotation.x = -Math.PI/2;
+                geometry.scene.rotation.x = -Math.PI/2;
                 
                 var streetViewOverlay = StreetViewOverlay();
                  // 41.684196,-0.888992 is a street close to the parking lot behind Ada Byron building
-                streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, result.scene, 42.341855, -71.087904);           
+                streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, geometry.scene, 42.341855, -71.087904);           
             }
 
 		</script>

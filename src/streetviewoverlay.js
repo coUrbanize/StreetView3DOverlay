@@ -119,7 +119,7 @@ function StreetViewOverlay() {
         SVO.currentPanorama = {};
         SVO.currentPanorama.position = new THREE.Vector3(panoPos.x, panoPos.y, panoPos.z); 
         SVO.currentPanorama.position.y += SVO.PANO_HEIGHT;
-        SVO.currentPanorama.heading =  293.08;           
+        SVO.currentPanorama.heading = 330; // dq: make this value a parameter          
         SVO.currentPanorama.pitch = 4.58;         
                 
         if (SVO.showing.streetView) {
