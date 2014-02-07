@@ -20,7 +20,7 @@
 	<body>
 
         		
-        <div id="streetviewpano" style="position: absolute; top:0; bottom:0; left:0; right:0; z-index: 0">  
+        <div id="streetviewpano">  
         </div>
         <!-- giving a margin in the bottom allows for Google links to work, but it creates some
         problems: I have needed a couple of hacks to prevent problems when the users pan on the
@@ -29,7 +29,7 @@
         And other problem is that the 3d model is sligthly misplaced (the 
         renderer div should have the same size and position of the panorama div to). As the position
         of the 3D model is not precise anyway, this is not a major issue for now -->  
-        <div id="container" style="position: absolute; top:0; bottom:20px; left: 0; right: 0; z-index: 5000;">
+        <div id="container" >
         </div>
         
 		
@@ -39,11 +39,13 @@
         
         <script src="lib/jquery-2.0.3.js"></script>
         <script src="lib/jquery.mousewheel.js"></script>
-		<script src="lib/three.min.js"></script>
-		<script src="lib/Detector.js"></script>
-		<script src="lib/ColladaLoader.js"></script>
-    <script src="lib/ObjectLoader.js"></script>
+    		<script src="lib/three.min.js"></script>
+    		<script src="lib/Detector.js"></script>
+    		<script src="lib/ColladaLoader.js"></script>
+        <script src="lib/ObjectLoader.js"></script>
         <script src="src/streetviewoverlay.js"></script>
+
+        <link href="/css/style.css" type="text/css" rel="stylesheet" />
 
 		<script>
 		var METERS2DEGREES = 0.0000125; // DO NOT USE THIS VALUE FOR 
@@ -124,7 +126,7 @@
 
             // collada
             var loader = new THREE.ColladaLoader();
-            loader.load('model3d/block_tall.dae', loadWheel);
+            loader.load('model3d/block.dae', loadWheel);
 
             // OBJ            
             // var manager = new THREE.LoadingManager();
@@ -167,8 +169,13 @@
 
                 // geometry.scene.rotation.y = Math.PI/2;
                 // geometry.scene.rotation.x = Math.PI/2;
+
+                // rotate
                 geometry.scene.rotation.z =0.4;
                 geometry.scene.rotation.x = -Math.PI/2;
+
+                // move downwards
+                geometry.scene.position.y = geometry.scene.position.y - 2
                 
                 var streetViewOverlay = StreetViewOverlay();
                  // 41.684196,-0.888992 is a street close to the parking lot behind Ada Byron building
