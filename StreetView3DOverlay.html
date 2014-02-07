@@ -124,7 +124,7 @@
 
             // collada
             var loader = new THREE.ColladaLoader();
-            loader.load('model3d/block.dae', loadWheel);
+            loader.load('model3d/block_tall.dae', loadWheel);
 
             // OBJ            
             // var manager = new THREE.LoadingManager();
@@ -145,7 +145,8 @@
                 // var xsize = mesh.geometry.boundingBox.max.x - mesh.geometry.boundingBox.min.x;
                 // var ysize = mesh.geometry.boundingBox.max.y - mesh.geometry.boundingBox.min.y;
                 // var zsize = mesh.geometry.boundingBox.max.z - mesh.geometry.boundingBox.min.z;
-                // // Sizes in meters
+                
+                // Sizes in meters
                 // var desiredXSize = 10; 
                 // var desiredYSize = 30; 
                 // var desiredZSize = 30; 
@@ -160,13 +161,13 @@
                 
                 // mesh.rotation.y = Math.PI/2;
 
-                // // For shadows (given the right ligths, and that renderer enables them)
+                // // For shadows (given the right lights, and that renderer enables them)
                 // mesh.castShadow = true;
                 // mesh.receiveShadow = true;
 
-                // result.scene.rotation.y = Math.PI/2;
-                // result.scene.rotation.x = Math.PI/2;
-                // result.scene.rotation.z = Math.PI/2;
+                // geometry.scene.rotation.y = Math.PI/2;
+                // geometry.scene.rotation.x = Math.PI/2;
+                geometry.scene.rotation.z =0.4;
                 geometry.scene.rotation.x = -Math.PI/2;
                 
                 var streetViewOverlay = StreetViewOverlay();

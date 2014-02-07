@@ -269,7 +269,9 @@ function StreetViewOverlay() {
             
             if (SVO.dragView.draggingView) {
                 horizontalMovement = SVO.dragView.mouseDownX  - event.clientX;
-                verticalMovement  = SVO.dragView.mouseDownY  - event.clientY;
+                // reverse this so it behaves like google
+                verticalMovement  = event.clientY - SVO.dragView.mouseDownY;
+                
                 
                 // The /N is to adjust the "responsiveness" of the panning. 
                 // This needs a rewriting but for now it works...                
