@@ -6,32 +6,32 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link href="/css/style.css" type="text/css" rel="stylesheet" />
 	</head>
-	<body>        		
-      <div id="streetviewpano">  
+	<body>
+      <div id="streetviewpano">
       </div>
       <!-- giving a margin in the bottom allows for Google links to work, but it creates some
       problems: I have needed a couple of hacks to prevent problems when the users pan on the
       margin (because that panning goes directly to the streetView control and not to my
       event listeners). It also makes the 3d model "disappear" on that part of the screen.
-      And other problem is that the 3d model is sligthly misplaced (the 
+      And other problem is that the 3d model is sligthly misplaced (the
       renderer div should have the same size and position of the panorama div to). As the position
-      of the 3D model is not precise anyway, this is not a major issue for now -->  
+      of the 3D model is not precise anyway, this is not a major issue for now -->
       <div id="container" >
       </div>
 
 
-        
+
 	</body>
 
-    <!-- We do not use a sensor to establish the location of the user: 
+    <!-- We do not use a sensor to establish the location of the user:
          must make explicit, license issue -->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="lib/jquery-2.0.3.js"></script>
     <script src="lib/jquery.mousewheel.js"></script>
 
     <script src="lib/three.min.js"></script>
-    
-    <script src="lib/Detector.js"></script>    
+
+    <script src="lib/Detector.js"></script>
     <script src="lib/ColladaLoader.js"></script>
     <script src="lib/ObjectLoader.js"></script>
 
