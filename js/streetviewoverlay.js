@@ -38,7 +38,7 @@ function StreetViewOverlay() {
 
     // A spot light
     SVO.light = new THREE.SpotLight(0xffffbb);
-    SVO.light.position.set( 200, 400, 400 ); // The position is chosen to be roughly
+    SVO.light.position.set( -400, 400, 400 ); // The position is chosen to be roughly
     // "compatible" with the sun in the panoramas we use
     // SVO.light.castShadow = true; // only spotligths cast shadows in ThreeJS (I think...)
 

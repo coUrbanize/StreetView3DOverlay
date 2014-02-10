@@ -44,7 +44,7 @@ function latLon2ThreeMeters(lat, lon) {
 
 // collada
 var loader = new THREE.ColladaLoader();
-loader.load('model3d/college/ust_archi_r4.dae', loadWheel);
+loader.load('model3d/college/ust_archi_r5.dae', loadWheel);
 
 // OBJ
 // var manager = new THREE.LoadingManager();
@@ -89,12 +89,12 @@ function loadWheel(geometry, materials) {
     // geometry.scene.rotation.x = Math.PI/2;
 
     // rotate
-    geometry.scene.rotation.z = 1;
+    geometry.scene.rotation.z = 0.5;
     geometry.scene.rotation.x = -Math.PI/2;
 
     // move downwards
     geometry.scene.position.y = geometry.scene.position.y - 2
 
     var streetViewOverlay = StreetViewOverlay();
-    streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, geometry.scene, 42.361630, -71.085268);
+    streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, geometry.scene, 42.361630, -71.085268); // 42.361630, -71.085268
 }
