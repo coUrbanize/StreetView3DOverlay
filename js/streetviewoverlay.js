@@ -38,6 +38,8 @@ function StreetViewOverlay() {
 
     // A spot light
     SVO.light = new THREE.SpotLight(0xffffbb);
+
+    // dq  - this is very important, as it affects whether the buidling face is visible or not
     SVO.light.position.set( -400, 400, 400 ); // The position is chosen to be roughly
     // "compatible" with the sun in the panoramas we use
     // SVO.light.castShadow = true; // only spotligths cast shadows in ThreeJS (I think...)
@@ -99,7 +101,7 @@ function StreetViewOverlay() {
             google.maps.event.addListener(SVO.streetViewPano, 'pov_changed', streetViewPOVChangeListener);
 
 
-
+            // show/ hide building
             if (SVO.showing.objects3D) {
                 SVO.scene.add(SVO.mesh);
             }
@@ -121,7 +123,7 @@ function StreetViewOverlay() {
         SVO.currentPanorama.position = new THREE.Vector3(panoPos.x, panoPos.y, panoPos.z);
         SVO.currentPanorama.position.y += SVO.PANO_HEIGHT;
         SVO.currentPanorama.heading = PANO_HEAD; // dq: make this value a parameter
-        SVO.currentPanorama.pitch = 4.58;
+        SVO.currentPanorama.pitch = PANO_PITCH;
 
         if (SVO.showing.streetView) {
             SVO.cameraParams.focalLength = SVO.streetViewFocalLenght();
