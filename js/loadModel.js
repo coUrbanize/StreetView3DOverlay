@@ -10,7 +10,7 @@ var METERS2DEGREES = 0.0000125; // DO NOT USE THIS VALUE FOR
 
 // Hayward parking lot
 var objectPosition = [42.361540, -71.084376];
-var PANO_HEAD = 90;
+var PANO_HEAD = 30;
 
 // Translates degrees to meters. It is just a hack, not a proper projection.
 // originLat and originLon should be the "center" of our area of interest or
@@ -89,12 +89,19 @@ function loadWheel(geometry, materials) {
     // geometry.scene.rotation.x = Math.PI/2;
 
     // rotate
-    geometry.scene.rotation.z = 0.5;
+    geometry.scene.rotation.z = 0.55;
     geometry.scene.rotation.x = -Math.PI/2;
 
-    // move downwards
-    geometry.scene.position.y = geometry.scene.position.y - 2
+    // move downwards (and back)
+    geometry.scene.position.y = geometry.scene.position.y - 4
+    geometry.scene.position.x = geometry.scene.position.x + 10
+
+    // scale
+    geometry.scene.scale.x = 0.04 // console log shows this value to be 0.0254 initially. How is this set?
+    geometry.scene.scale.y = 0.04
+    geometry.scene.scale.z = 0.04
+
 
     var streetViewOverlay = StreetViewOverlay();
-    streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, geometry.scene, 42.361630, -71.085268); // 42.361630, -71.085268
+    streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, geometry.scene, 42.361709, -71.085288); //  | 42.361630, -71.085268
 }
