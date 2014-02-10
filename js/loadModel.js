@@ -9,7 +9,7 @@ var METERS2DEGREES = 0.0000125; // DO NOT USE THIS VALUE FOR
 // var objectPosition = [42.341856, -71.087960];
 
 // Hayward parking lot
-var objectPosition = [42.361623, -71.084763];
+var objectPosition = [42.361540, -71.084376];
 var PANO_HEAD = 90;
 
 // Translates degrees to meters. It is just a hack, not a proper projection.
@@ -44,7 +44,7 @@ function latLon2ThreeMeters(lat, lon) {
 
 // collada
 var loader = new THREE.ColladaLoader();
-loader.load('model3d/college/models/model.dae', loadWheel);
+loader.load('model3d/college/ust_archi_r4.dae', loadWheel);
 
 // OBJ
 // var manager = new THREE.LoadingManager();
@@ -57,7 +57,7 @@ loader.load('model3d/college/models/model.dae', loadWheel);
 function loadWheel(geometry, materials) {
     // var mesh;
     // mesh = new THREE.Mesh(geometry,
-    //                           new THREE.MeshFaceMaterial(materials));
+    // new THREE.MeshFaceMaterial(materials));
 
     // meshPos =  latLon2ThreeMeters(objectPosition[0], objectPosition[1]);
 
@@ -89,7 +89,7 @@ function loadWheel(geometry, materials) {
     // geometry.scene.rotation.x = Math.PI/2;
 
     // rotate
-    geometry.scene.rotation.z =0.4;
+    geometry.scene.rotation.z = 1;
     geometry.scene.rotation.x = -Math.PI/2;
 
     // move downwards

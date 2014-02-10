@@ -7,6 +7,7 @@ function StreetViewOverlay() {
     }
 
     // Fixed set of panoramas to choose
+    // dq: these are not used (StreetView just loads releveant panoramas for this area)
     var panoramaPos = [[41.684196,-0.888992],[41.685296,-0.888992],
                        [41.684196,-0.887992],[41.684196,-0.889992]];
     var currShownPano = 0;
@@ -39,7 +40,7 @@ function StreetViewOverlay() {
     SVO.light = new THREE.SpotLight(0xffffbb);
     SVO.light.position.set( 200, 400, 400 ); // The position is chosen to be roughly
     // "compatible" with the sun in the panoramas we use
-    SVO.light.castShadow = true; // only spotligths cast shadows in ThreeJS (I think...)
+    // SVO.light.castShadow = true; // only spotligths cast shadows in ThreeJS (I think...)
 
     SVO.renderer = null;
 
@@ -269,7 +270,7 @@ function StreetViewOverlay() {
 
             if (SVO.dragView.draggingView) {
                 horizontalMovement = SVO.dragView.mouseDownX  - event.clientX;
-                // reverse this so it behaves like google
+                // dq : reverse this so it behaves like google
                 verticalMovement  = event.clientY - SVO.dragView.mouseDownY;
 
 
