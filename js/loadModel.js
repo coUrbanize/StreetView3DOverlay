@@ -59,7 +59,7 @@ function latLon2ThreeMeters(lat, lon) {
 
 // collada
 var loader = new THREE.ColladaLoader();
-loader.load(BUILDING_3D, loadWheel);
+loader.load(BUILDING_3D, loadBuilding);
 
 // OBJ
 // var manager = new THREE.LoadingManager();
@@ -69,7 +69,7 @@ loader.load(BUILDING_3D, loadWheel);
 // var loader = new THREE.ObjectLoader(manager);
 // loader.load('model3d/block.obj', loadWheel);
 
-function loadWheel(geometry, materials) {
+function loadBuilding(geometry, materials) {
 
     // rotate
     geometry.scene.rotation.z = 0.55;
