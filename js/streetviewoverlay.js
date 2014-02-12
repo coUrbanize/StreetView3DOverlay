@@ -12,10 +12,10 @@ function StreetViewOverlay() {
                        [41.684196,-0.887992],[41.684196,-0.889992]];
     var currShownPano = 0;
 
-    SVO.PANO_HEIGHT = 3; // For instance...
+    SVO.PANO_HEIGHT = 4; // For instance...
 
-    SVO.DEFAULT_FOCAL_LENGTH = 25; // Will be using the default 35 mm for frame size
-    SVO.STREETVIEW_FOCAL_LENGTH_MULTIPLIER = 15; // Discovered experimentally. Imprecise but
+    SVO.DEFAULT_FOCAL_LENGTH = 50; // Will be using the default 35 mm for frame size
+    SVO.STREETVIEW_FOCAL_LENGTH_MULTIPLIER = 12; // Discovered experimentally. Imprecise but
     // a reasonable approximation I think
     // 12 gives a horizontal FOV of 1.57 rads (aprox 90 degrees). With that value,
     // vertically the objects do not fit very well.. ??
@@ -40,7 +40,7 @@ function StreetViewOverlay() {
     SVO.light = new THREE.SpotLight(0xffffbb);
 
     // dq  - this is very important, as it affects whether the buidling face is visible or not
-    SVO.light.position.set( -400, 400, 400 ); // The position is chosen to be roughly
+    SVO.light.position.set( LIGHT_POSITION[0], LIGHT_POSITION[1], LIGHT_POSITION[2] ); // The position is chosen to be roughly
     // "compatible" with the sun in the panoramas we use
     // SVO.light.castShadow = true; // only spotligths cast shadows in ThreeJS (I think...)
 
@@ -63,8 +63,8 @@ function StreetViewOverlay() {
     SVO.load = function(showing, mesh, lat, lon) {
         $(document).ready(function(){
             SVO.showing= $.extend(SVO.showing, showing);
+            mesh.children[0].material.opacity = OPACITY;
             SVO.mesh = mesh;
-
 
             if (SVO.showing.webGL) {
                 if (Detector.webgl) {
