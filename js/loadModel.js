@@ -52,10 +52,10 @@ function latLon2ThreeMeters(lat, lon) {
 // using collada from  Sketchup
 function loadBuildings(show_buildings){
     var loader = new THREE.ColladaLoader();
-    loader.load(BUILDING_3D, testFunc(show_buildings));
+    loader.load(BUILDING_3D, load_building_custom(show_buildings));
 }
 
-function testFunc(show_buildings){
+function load_building_custom(show_buildings){
 
     // load building
     return function loadBuilding(geometry) {

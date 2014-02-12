@@ -19,6 +19,7 @@
       <div id="container" >
         <div class="button-div">
           <button id="show-hide" class="button-controls" type="button" onclick="showHideBuildings()">Show / Hide </button>
+          <button id="existing-proposed" class="button-controls" type="button" onclick="rescaleBuildings()">Existing / Proposed </button>
         </div>
       </div>
 	</body>
@@ -56,6 +57,19 @@
               buildingObject.translateY(1000);
           }
 
+        }
+
+        function rescaleBuildings(){
+          var clicked = $('#existing-proposed').hasClass('clicked');
+          var buildingObject = streetViewOverlay.scene.children[0];
+
+          if(clicked){
+              $('#existing-proposed').removeClass('clicked');
+              buildingObject.scale.z = buildingObject.scale.z + 0.029;
+          }else{
+              $('#existing-proposed').addClass('clicked');
+              buildingObject.scale.z = buildingObject.scale.z - 0.029;
+          }
         }
     </script>
 
