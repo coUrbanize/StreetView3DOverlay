@@ -62,9 +62,11 @@ function StreetViewOverlay() {
 
     SVO.load = function(showing, mesh, lat, lon) {
         $(document).ready(function(){
-            SVO.showing= $.extend(SVO.showing, showing);
-            mesh.children[0].material.opacity = OPACITY;
-            SVO.mesh = mesh;
+            if(mesh){
+                SVO.showing= $.extend(SVO.showing, showing);
+                mesh.children[0].material.opacity = OPACITY;
+                SVO.mesh = mesh;
+            }
 
             if (SVO.showing.webGL) {
                 if (Detector.webgl) {

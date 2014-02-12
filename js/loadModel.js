@@ -11,7 +11,8 @@ SCENE_POSITION = [-60, -9.5, -1],
 SCENE_ROTATION = [-Math.PI/2, 0, 0.4],
 LIGHT_POSITION = [ 400, 400, -200],
 SCALE = [0.04, 0.045, 0.075],
-OPACITY = 0.75;
+OPACITY = 0.75,
+SHOW_3D = true;
 
 
 // Translates degrees to meters. It is just a hack, not a proper projection.
@@ -48,35 +49,37 @@ function latLon2ThreeMeters(lat, lon) {
     return {'x': coordinates.x, 'y': 0, 'z': -coordinates.y};
 }
 
-// collada
-var loader = new THREE.ColladaLoader();
-loader.load(BUILDING_3D, loadBuilding);
-
-// OBJ
-// var manager = new THREE.LoadingManager();
-// manager.onProgress = function ( item, loaded, total ) {
-//   console.log( item, loaded, total );
-// };
-// var loader = new THREE.ObjectLoader(manager);
-// loader.load('model3d/block.obj', loadWheel);
-
-function loadBuilding(geometry, materials) {
-
-    // rotate
-    geometry.scene.rotation.x = SCENE_ROTATION[0];
-    geometry.scene.rotation.z = SCENE_ROTATION[2];
-
-    // move downwards (and back)
-    geometry.scene.position.x = geometry.scene.position.x + SCENE_POSITION[0];
-    geometry.scene.position.y = geometry.scene.position.y + SCENE_POSITION[1];
-    geometry.scene.position.z = geometry.scene.position.z + SCENE_POSITION[2];
-
-    // scale
-    // console log shows this value to be 0.0254 initially. How is this set?
-    geometry.scene.scale.x = SCALE[0];
-    geometry.scene.scale.y = SCALE[1];
-    geometry.scene.scale.z = SCALE[2];
-
-    var streetViewOverlay = StreetViewOverlay();
-    streetViewOverlay.load({streetView: true, objects3D: true, webGL:true}, geometry.scene, VIEWER_POSITION[0], VIEWER_POSITION[1]);
+// using collada from  Sketchup
+function loadBuildings(show_buildings){
+    var loader = new THREE.ColladaLoader();
+    loader.load(BUILDING_3D, testFunc(show_buildings));
 }
+
+function testFunc(show_buildings){
+
+    // load building
+    return function loadBuilding(geometry) {
+
+        // rotate
+        geometry.scene.rotation.x = SCENE_ROTATION[0];
+        geometry.scene.rotation.z = SCENE_ROTATION[2];
+
+        // move downwards (and back)
+        geometry.scene.position.x = geometry.scene.position.x + SCENE_POSITION[0];
+        geometry.scene.position.y = geometry.scene.position.y + SCENE_POSITION[1];
+        geometry.scene.position.z = geometry.scene.position.z + SCENE_POSITION[2];
+
+        // scale
+        geometry.scene.scale.x = SCALE[0];
+        geometry.scene.scale.y = SCALE[1];
+        geometry.scene.scale.z = SCALE[2];
+
+        var mesh = geometry.scene;
+
+        streetViewOverlay = StreetViewOverlay();
+        streetViewOverlay.load({streetView: true, objects3D: show_buildings, webGL:true}, mesh, VIEWER_POSITION[0], VIEWER_POSITION[1]);
+
+    }
+
+}
+

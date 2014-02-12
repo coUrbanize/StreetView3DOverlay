@@ -17,7 +17,9 @@
       renderer div should have the same size and position of the panorama div to). As the position
       of the 3D model is not precise anyway, this is not a major issue for now -->
       <div id="container" >
-          <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+        <div class="button-div">
+          <button id="show-hide" class="button-controls" type="button" onclick="showHideBuildings()">Show / Hide </button>
+        </div>
       </div>
 	</body>
 
@@ -35,5 +37,26 @@
 
     <script src="js/streetviewoverlay.js"></script>
     <script src="js/loadModel.js"></script>
+
+    <script>
+        // call function
+        loadBuildings(true);
+
+        // hide buildings by shoving them offscreen
+        // this is a quick hack
+        function showHideBuildings(){
+          var clicked = $('#show-hide').hasClass('clicked');
+          var buildingObject = streetViewOverlay.scene.children[0];
+
+          if(clicked){
+              $('#show-hide').removeClass('clicked');
+              buildingObject.translateY(-1000);
+          }else{
+              $('#show-hide').addClass('clicked');
+              buildingObject.translateY(1000);
+          }
+
+        }
+    </script>
 
 </html>

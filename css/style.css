@@ -19,11 +19,20 @@ p {
 }
 
 #container{
-	position:
-	absolute;
+	position: absolute;
 	top:0;
 	bottom:20px;
 	left: 0;
 	right: 0;
+	z-index: 5000;
+}
+
+.button-div{
+	position: absolute;
+	top:50px;
+	right:100px;
+}
+
+.button-controls{	
 	z-index: 5000;
 }
