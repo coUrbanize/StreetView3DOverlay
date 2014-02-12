@@ -61,16 +61,20 @@
 
         function rescaleBuildings(){
           var clicked = $('#existing-proposed').hasClass('clicked');
-          var buildingObject = streetViewOverlay.scene.children[0];
+          var buildingObject = streetViewOverlay.scene.children[0].children[0].children[1]
 
           if(clicked){
               $('#existing-proposed').removeClass('clicked');
-              buildingObject.scale.z = buildingObject.scale.z + 0.029;
+              buildingObject.scale.z = buildingObject.scale.z - 2;
+              buildingObject.position.z = 0;
           }else{
               $('#existing-proposed').addClass('clicked');
-              buildingObject.scale.z = buildingObject.scale.z - 0.029;
+              buildingObject.scale.z = buildingObject.scale.z + 2;
+              buildingObject.position.z = -20;
           }
         }
+
+        // buildingObject = streetViewOverlay.scene.children[0].children[0].children[0]
     </script>
 
 </html>

@@ -14,7 +14,7 @@ function StreetViewOverlay() {
 
     SVO.PANO_HEIGHT = 4; // For instance...
 
-    SVO.DEFAULT_FOCAL_LENGTH = 50; // Will be using the default 35 mm for frame size
+    SVO.DEFAULT_FOCAL_LENGTH = 70; // Will be using the default 35 mm for frame size
     SVO.STREETVIEW_FOCAL_LENGTH_MULTIPLIER = 12; // Discovered experimentally. Imprecise but
     // a reasonable approximation I think
     // 12 gives a horizontal FOV of 1.57 rads (aprox 90 degrees). With that value,
@@ -64,7 +64,9 @@ function StreetViewOverlay() {
         $(document).ready(function(){
             if(mesh){
                 SVO.showing= $.extend(SVO.showing, showing);
-                mesh.children[0].material.opacity = OPACITY;
+                mesh.children[0].children[0].material.opacity = OPACITY;
+                // mesh.children[0].children[1].material.opacity = OPACITY;
+                // mesh.children[0].children[2].material.opacity = OPACITY;
                 SVO.mesh = mesh;
             }
 
