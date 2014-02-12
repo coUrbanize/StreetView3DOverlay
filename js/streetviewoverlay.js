@@ -90,7 +90,7 @@ function StreetViewOverlay() {
 
             SVO.$streetViewPano = $('#'+SVO.STREETVIEW_DIV_ID);
             SVO.streetViewPano = new google.maps.StreetViewPanorama($('#'+SVO.STREETVIEW_DIV_ID).get(0),
-                             {disableDefaultUI: false, scrollwheel: true, clickToGo: true});
+                             {disableDefaultUI: true, scrollwheel: false, clickToGo: false, linksControl: false, zoomControl: false});
 
             // In order to show and make responsive the links that Google adds to every
             // Street View panorama (link to Google maps, terms of use etc.) I have
