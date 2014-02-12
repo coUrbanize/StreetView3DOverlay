@@ -29,10 +29,13 @@ p {
 
 .button-div{
 	position: absolute;
-	top:50px;
-	right:100px;
+	right:10px;
+	bottom:30px;
 }
 
 .button-controls{	
+	font-size: 13px;
+	width: 150px;
+	height: 40px;
 	z-index: 5000;
 }
